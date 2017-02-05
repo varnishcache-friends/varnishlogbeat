@@ -1,15 +1,14 @@
 # varnishlogbeat
 
 varnishlogbeat collects log data from a Varnish Shared Memory file and ships it
-to Elasticseach.
+to Elasticsearch.
 
 varnishlogbeat uses [vago](phenomenes/vago).
 
 ## Status
 
-varnishlogbeat is currently in beta but is functional. If you encounter permormance
-issues or bugs, please create an issue or send a pull request.
-
+varnishlogbeat is currently in beta but it's functional. If you encounter
+performance issues or any bugs please create an issue or send a pull request.
 
 ### Requirements
 
