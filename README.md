@@ -3,7 +3,7 @@
 varnishlogbeat collects log data from a Varnish Shared Memory file and ships it
 to Elasticsearch.
 
-varnishlogbeat uses [vago](phenomenes/vago).
+varnishlogbeat uses [vago](https://github.com/phenomenes/vago).
 
 ## Status
 
@@ -33,7 +33,7 @@ go build .
 
 ### Run
 
-Install and run [elasticsearch](elastic/elasticsearch).
+Install and run [elasticsearch](https://github.com/elastic/elasticsearch).
 
 Run `varnishlogbeat` with debugging output enabled:
 
@@ -41,4 +41,4 @@ Run `varnishlogbeat` with debugging output enabled:
 ./varnishlogbeat -c varnishlogbeat.yml -e -d "*"
 ```
 
-Additionally you can install [kibana](elastic/kibana) to visualize the data.
+Additionally you can install [kibana](https://github.com/elastic/kibana) to visualise the data.
