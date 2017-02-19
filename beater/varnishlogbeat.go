@@ -14,6 +14,7 @@ import (
 	"github.com/phenomenes/varnishlogbeat/config"
 )
 
+// Varnishlogbeat implements the Beater interface.
 type Varnishlogbeat struct {
 	done    chan struct{}
 	config  config.Config
@@ -21,7 +22,7 @@ type Varnishlogbeat struct {
 	varnish *vago.Varnish
 }
 
-// New creates beater
+// New creates a new Varnishlogbeat.
 func New(b *beat.Beat, cfg *common.Config) (beat.Beater, error) {
 	config := config.DefaultConfig
 	if err := cfg.Unpack(&config); err != nil {
@@ -36,6 +37,7 @@ func New(b *beat.Beat, cfg *common.Config) (beat.Beater, error) {
 	return &vb, nil
 }
 
+// Run opens a Varnish Shared Memory file and publishes log events.
 func (vb *Varnishlogbeat) Run(b *beat.Beat) error {
 	var err error
 
@@ -56,6 +58,7 @@ func (vb *Varnishlogbeat) Run(b *beat.Beat) error {
 	return err
 }
 
+// harvest reads and parses Varnish log data.
 func (vb *Varnishlogbeat) harvest() error {
 	tx := make(common.MapStr)
 	counter := 1
@@ -105,6 +108,7 @@ func (vb *Varnishlogbeat) harvest() error {
 	return nil
 }
 
+// Stop stops processing Varnish events, closes the VSM and publisher client.
 func (vb *Varnishlogbeat) Stop() {
 	vb.varnish.Stop()
 	vb.varnish.Close()
