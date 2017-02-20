@@ -1,0 +1,28 @@
+version: '2'
+services:
+  varnislogbeat:
+    build: .
+    ports:
+    - 8080:8080
+    depends_on:
+    - elasticsearch
+    links:
+    - elasticsearch
+    - backend
+    image: varnishlogbeat
+  backend:
+    image: nginx:latest
+    ports:
+    - 80:80
+    environment:
+    - NGINX_HOST=backend
+  elasticsearch:
+    image: elasticsearch:5
+    ports:
+    - 9200:9200
+  kibana:
+    image: kibana:5
+    ports:
+    - 5601:5601
+    depends_on:
+    - elasticsearch

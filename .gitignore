@@ -5,3 +5,4 @@
 /varnishlogbeat
 /varnishlogbeat.test
 *.pyc
+*.bak
