@@ -12,7 +12,7 @@ performance issues or any bugs please create an issue or send a pull request.
 
 ### Requirements
 
-* [Golang](https://golang.org/dl/) 1.7
+* [Go](https://golang.org/dl/) >= 1.7
 * pkg-config
 * [varnish-dev](http://www.varnish-cache.org/releases/) >= 4.1
 
