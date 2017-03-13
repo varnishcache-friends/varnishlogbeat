@@ -7,4 +7,4 @@ varnishd \
 
 sleep 5
 
-varnishlogbeat -c varnishlogbeat.yml -e -d "*"
+./varnishlogbeat -c varnishlogbeat.yml -e -d "*"
