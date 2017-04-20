@@ -1,5 +1,5 @@
 hash: 08fe68f26599926842f731fff9b40d2227d3e38b6f487400b38d6f0283a03761
-updated: 2017-02-04T17:35:25.505852618Z
+updated: 2017-04-20T09:31:49.538005268+01:00
 imports:
 - name: github.com/davecgh/go-spew
   version: 5215b55f46b2b919f50a1df0eaa5886afe4e3b3d
@@ -14,18 +14,25 @@ imports:
 - name: github.com/eapache/queue
   version: ded5959c0d4e360646dc9e9908cff48666781367
 - name: github.com/elastic/beats
-  version: 29ee4e7b4d0161d268b1fad30112ea54751bf960
+  version: 985906a71d9cac81f217b129eff11fca0695e4e3
   subpackages:
   - libbeat/beat
   - libbeat/cfgfile
   - libbeat/common
   - libbeat/common/dtfmt
+  - libbeat/common/file
   - libbeat/common/fmtstr
   - libbeat/common/jsontransform
+  - libbeat/common/match
   - libbeat/common/op
   - libbeat/common/streambuf
+  - libbeat/dashboards/dashboards
   - libbeat/logp
+  - libbeat/monitoring
+  - libbeat/monitoring/adapter
   - libbeat/outputs
+  - libbeat/outputs/codecs/format
+  - libbeat/outputs/codecs/json
   - libbeat/outputs/console
   - libbeat/outputs/elasticsearch
   - libbeat/outputs/fileout
@@ -39,6 +46,7 @@ imports:
   - libbeat/outputs/redis
   - libbeat/outputs/transport
   - libbeat/paths
+  - libbeat/plugin
   - libbeat/processors
   - libbeat/processors/actions
   - libbeat/processors/add_cloud_metadata
@@ -56,7 +64,7 @@ imports:
   - server/internal
   - server/v2
 - name: github.com/elastic/go-ucfg
-  version: b42667b880b6190864107f2cc6d95c070a0ca580
+  version: ec8488a52542c0c51e42e8ea204dcaff400bc644
   subpackages:
   - cfgutil
   - flag
@@ -81,6 +89,8 @@ imports:
   version: 09cded8978dc9e80714c4d85b0322337b0a1e5e0
 - name: github.com/klauspost/crc32
   version: 19b0b332c9e4516a6370a0456e6182c3b5036720
+- name: github.com/mitchellh/hashstructure
+  version: b098c52ef6beab8cd82bc4a32422cf54b890e8fa
 - name: github.com/nranchev/go-libGeoIP
   version: c78e8bd2dd3599feb21fd30886043979e82fe948
 - name: github.com/phenomenes/vago
