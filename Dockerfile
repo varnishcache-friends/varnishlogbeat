@@ -1,5 +1,7 @@
 FROM golang:1.8
 
+LABEL maintainer phenomenes
+
 ENV PATH=$PATH:$GOPATH/bin
 
 RUN apt-get update && apt-get install -y \
