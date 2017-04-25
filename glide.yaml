@@ -8,3 +8,4 @@ import:
   - libbeat/logp
   - libbeat/publisher
 - package: github.com/phenomenes/vago
+  version: v1.0.1

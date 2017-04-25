@@ -3,10 +3,13 @@
 
 package config
 
+import (
+	"time"
+)
+
 type Config struct {
-	Path string `config:"path"`
+	Path    string        `config:"path"`
+	Timeout time.Duration `config:"timeout"`
 }
 
-var DefaultConfig = Config{
-	Path: "",
-}
+var DefaultConfig = Config{}

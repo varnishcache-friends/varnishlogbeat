@@ -29,7 +29,20 @@ const (
 	clientmarker  = uint32(1) << 30
 	backendmarker = uint32(1) << 31
 	identmask     = ^(uint32(3) << 30)
+	// Cursor options
+	COPT_TAIL     = 1 << 0
+	COPT_BATCH    = 1 << 1
+	COPT_TAILSTOP = 1 << 2
 )
+
+var (
+	ErrAbandoned = errors.New("log abandoned")
+	ErrOverrun   = errors.New("log overrun")
+)
+
+type ErrVSL string
+
+func (e ErrVSL) Error() string { return string(e) }
 
 // LogCallback defines a callback function.
 // It's used by Log.
@@ -37,12 +50,12 @@ type LogCallback func(vxid uint32, tag, _type, data string) int
 
 // Log calls the given callback for any transactions matching the query
 // and grouping.
-func (v *Varnish) Log(query string, grouping uint32, logCallback LogCallback) error {
+func (v *Varnish) Log(query string, grouping uint32, copt uint, logCallback LogCallback) error {
 	v.vsl = C.VSL_New()
 	handle := ptrHandles.track(logCallback)
 	defer ptrHandles.untrack(handle)
 	for {
-		v.cursor = C.VSL_CursorVSM(v.vsl, v.vsm, 1)
+		v.cursor = C.VSL_CursorVSM(v.vsl, v.vsm, C.uint(copt))
 		if v.cursor != nil {
 			break
 		}
@@ -58,21 +71,30 @@ func (v *Varnish) Log(query string, grouping uint32, logCallback LogCallback) er
 		v.vslq = C.VSLQ_New(v.vsl, &v.cursor, grouping, nil)
 	}
 	if v.vslq == nil {
-		return errors.New(C.GoString(C.VSL_Error(v.vsl)))
+		return ErrVSL(C.GoString(C.VSL_Error(v.vsl)))
 	}
-	for v.alive {
+DispatchLoop:
+	for v.alive() {
 		i := C.VSLQ_Dispatch(v.vslq,
 			(*C.VSLQ_dispatch_f)(unsafe.Pointer(C.dispatchCallback)),
 			handle)
-		if i == 1 {
+		switch i {
+		case 1:
+			// Call again
 			continue
-		}
-		if i == 0 {
-			time.Sleep(1000)
+		case 0:
+			// Nothing to do but wait
+			time.Sleep(10 * time.Millisecond)
 			continue
-		}
-		if i == -1 {
-			break
+		case -1:
+			// EOF
+			break DispatchLoop
+		case -2:
+			// Abandoned
+			return ErrAbandoned
+		default:
+			// Overrun
+			return ErrOverrun
 		}
 	}
 	return nil

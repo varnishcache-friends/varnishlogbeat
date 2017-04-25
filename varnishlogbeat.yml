@@ -3,8 +3,10 @@
 ############################# Varnishlogbeat ######################################
 
 varnishlogbeat:
-  # Path to the Varnish Shared Memory file, e.g.: /var/lib/varnish/foobar/._vsm
+  # Path to the Varnish Shared Memory file, e.g.: /var/lib/varnish/foobar
   #path: ""
+  # VSM connection timeout in milliseconds
+  timeout: 5000
 
 #================================ General =====================================
 

@@ -14,7 +14,7 @@ is located before running `go get`. For example:
 export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
 ```
 
-## Installation
+## Installation
 ```
 go get github.com/phenomenes/vago
 ```
@@ -33,12 +33,13 @@ import (
 
 func main() {
 	// Open the default Varnish Shared Memory file
-	v, err := vago.Open("")
+	c := vago.Config{}
+	v, err := vago.Open(&c)
 	if err != nil {
 		fmt.Println(err)
 		return
 	}
-	v.Log("", vago.RAW, func(vxid uint32, tag, _type, data string) int {
+	v.Log("", vago.RAW, vago.COPT_TAIL|vago.COPT_BATCH, func(vxid uint32, tag, _type, data string) int {
 		fmt.Printf("%10d %-14s %s %s\n", vxid, tag, _type, data)
 		// -1 : Stop after it finds the first record
 		// >= 0 : Nothing to do but wait
@@ -60,7 +61,8 @@ import (
 
 func main() {
 	// Open the default Varnish Shared Memory file
-	v, err := vago.Open("")
+	c := vago.Config{}
+	v, err := vago.Open(&c)
 	if err != nil {
 		fmt.Println(err)
 		return
