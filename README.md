@@ -5,11 +5,6 @@ to Elasticsearch.
 
 varnishlogbeat uses [vago](https://github.com/phenomenes/vago).
 
-## Status
-
-varnishlogbeat is currently in beta but it's functional. If you encounter
-performance issues or any bugs please create an issue or send a pull request.
-
 ### Requirements
 
 * [Go](https://golang.org/dl/) >= 1.7
