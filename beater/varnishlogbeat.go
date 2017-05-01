@@ -16,7 +16,6 @@ import (
 
 // Varnishlogbeat implements the Beater interface.
 type Varnishlogbeat struct {
-	done    chan struct{}
 	client  publisher.Client
 	varnish *vago.Varnish
 	config  *vago.Config
@@ -78,7 +77,11 @@ func (vb *Varnishlogbeat) harvest() error {
 			}
 
 			switch tag {
-			case "BereqHeader", "BerespHeader", "ObjHeader", "ReqHeader", "RespHeader":
+			case "BereqHeader",
+				"BerespHeader",
+				"ObjHeader",
+				"ReqHeader",
+				"RespHeader":
 				header := strings.SplitN(data, ": ", 2)
 				k := header[0]
 				v := header[1]
