@@ -81,7 +81,8 @@ func (vb *Varnishlogbeat) harvest() error {
 				"BerespHeader",
 				"ObjHeader",
 				"ReqHeader",
-				"RespHeader":
+				"RespHeader",
+				"Timestamp":
 				header := strings.SplitN(data, ": ", 2)
 				k := header[0]
 				v := header[1]
