@@ -1,9 +1,10 @@
-# varnishlogbeat
+# Varnishlogbeat
 
-varnishlogbeat collects log data from a Varnish Shared Memory file and ships it
+Varnishlogbeat is an Elastic [beat](https://www.elastic.co/products/beats)
+that reads log data from a Varnish Shared Memory file and ships it
 to Elasticsearch.
 
-varnishlogbeat uses [vago](https://github.com/phenomenes/vago).
+Varnishlogbeat uses [vago](https://github.com/phenomenes/vago).
 
 ### Requirements
 
@@ -28,7 +29,7 @@ go build .
 
 ### Run
 
-Install and run [elasticsearch](https://github.com/elastic/elasticsearch).
+Install and run [Elasticsearch](https://github.com/elastic/elasticsearch).
 
 Run `varnishlogbeat` with debugging output enabled:
 
@@ -36,4 +37,18 @@ Run `varnishlogbeat` with debugging output enabled:
 ./varnishlogbeat -c varnishlogbeat.yml -e -d "*"
 ```
 
-Additionally you can install [kibana](https://github.com/elastic/kibana) to visualise the data.
+Additionally you can install [Kibana](https://github.com/elastic/kibana) to
+visualize the data.
+
+### Run on Docker
+
+```
+docker-compose up --build
+```
+
+This command will create the following containers:
+
+- Kibana (localhost:5601)
+- Varnishlogbeat / Varnish (localhost:8080)
+- Nginx (localhost:80)
+- Elasticsearch (localhost:9200)
