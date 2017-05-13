@@ -2,6 +2,7 @@ package beater
 
 import (
 	"fmt"
+	"strconv"
 	"strings"
 	"time"
 
@@ -84,13 +85,22 @@ func (vb *Varnishlogbeat) harvest() error {
 				"RespHeader",
 				"Timestamp":
 				header := strings.SplitN(data, ": ", 2)
-				k := header[0]
-				v := header[1]
-				if _, ok := tx[tag]; ok {
-					tx[tag].(common.MapStr)[k] = v
+				key := header[0]
+				var value interface{}
+				if key == "Content-Length" {
+					value, _ = strconv.Atoi(header[1])
 				} else {
-					tx[tag] = common.MapStr{k: v}
+					value = header[1]
 				}
+				if _, ok := tx[tag]; ok {
+					tx[tag].(common.MapStr)[key] = value
+				} else {
+					tx[tag] = common.MapStr{key: value}
+				}
+
+			case "Length":
+				tx[tag], _ = strconv.Atoi(data)
+
 			case "End":
 				event := common.MapStr{
 					"@timestamp": common.Time(time.Now()),
