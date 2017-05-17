@@ -46,9 +46,9 @@ visualize the data.
 docker-compose up --build
 ```
 
-This command will create the following containers:
+The above command will create the following containers:
 
-- Kibana (localhost:5601)
-- Varnishlogbeat / Varnish (localhost:8080)
-- Nginx (localhost:80)
-- Elasticsearch (localhost:9200)
+- [Kibana](http://127.0.0.1:5601/status#?_g=())
+- Varnishlogbeat / [Varnish](http://127.0.0.1:8080/status)
+- [Nginx](http://127.0.0.1/)
+- [Elasticsearch](http://127.0.0.1:9200/)
