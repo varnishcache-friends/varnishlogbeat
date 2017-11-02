@@ -8,7 +8,6 @@ ENV VARNISH_VERSION=5.1.2-1~stretch
 
 RUN apt-get update && apt-get install -y \
 	apt-transport-https \
-	#debian-archive-keyring \
 	libjemalloc1 \
 	pkg-config \
 	&& echo "deb https://packagecloud.io/varnishcache/varnish5/debian/ stretch main" >> /etc/apt/sources.list.d/vanrish.list \
