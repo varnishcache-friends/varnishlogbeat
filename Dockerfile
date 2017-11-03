@@ -10,7 +10,7 @@ RUN apt-get update && apt-get install -y \
 	apt-transport-https \
 	libjemalloc1 \
 	pkg-config \
-	&& echo "deb https://packagecloud.io/varnishcache/varnish5/debian/ stretch main" >> /etc/apt/sources.list.d/vanrish.list \
+	&& echo "deb https://packagecloud.io/varnishcache/varnish5/debian/ stretch main" >> /etc/apt/sources.list.d/varnish.list \
 	&& curl -s -L https://packagecloud.io/varnishcache/varnish5/gpgkey | apt-key add - \
 	&& apt-get update && apt-get install -y \
 	varnish=${VARNISH_VERSION} \
