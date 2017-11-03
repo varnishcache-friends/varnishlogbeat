@@ -1,28 +1,30 @@
-version: '2'
+version: '3'
 services:
   varnishlogbeat:
     build: .
     ports:
-    - 8080:8080
+      - 8080:8080
     depends_on:
-    - elasticsearch
+      - elasticsearch
     links:
-    - elasticsearch
-    - backend
+      - elasticsearch
+      - backend
     image: varnishlogbeat
   backend:
     image: nginx:latest
     ports:
-    - 80:80
+      - 80:80
     environment:
-    - NGINX_HOST=backend
+      - NGINX_HOST=backend
   elasticsearch:
-    image: elasticsearch:5.4.0
+    image: docker.elastic.co/elasticsearch/elasticsearch:5.4.3
     ports:
-    - 9200:9200
+      - 9200:9200
+    environment:
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
   kibana:
-    image: kibana:5.4.0
+    image: docker.elastic.co/kibana/kibana:5.4.3
     ports:
-    - 5601:5601
+      - 5601:5601
     depends_on:
-    - elasticsearch
+      - elasticsearch
