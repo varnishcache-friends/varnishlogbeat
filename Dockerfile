@@ -4,17 +4,15 @@ LABEL maintainer phenomenes
 
 ENV PATH=$PATH:$GOPATH/bin
 
-ENV VARNISH_VERSION=5.1.2-1~stretch
-
 RUN apt-get update && apt-get install -y \
 	apt-transport-https \
 	libjemalloc1 \
 	pkg-config \
-	&& echo "deb https://packagecloud.io/varnishcache/varnish5/debian/ stretch main" >> /etc/apt/sources.list.d/varnish.list \
-	&& curl -s -L https://packagecloud.io/varnishcache/varnish5/gpgkey | apt-key add - \
+	&& echo "deb https://packagecloud.io/varnishcache/varnish51/debian/ stretch main" >> /etc/apt/sources.list.d/varnish.list \
+	&& curl -s -L https://packagecloud.io/varnishcache/varnish51/gpgkey | apt-key add - \
 	&& apt-get update && apt-get install -y \
-	varnish=${VARNISH_VERSION} \
-	varnish-dev=${VARNISH_VERSION} \
+	varnish \
+	varnish-dev \
 	&& apt-get clean && rm -rf /var/lib/apt/lists/*
 
 RUN mkdir -p $GOPATH/src/github.com/phenomenes/varnishlogbeat
