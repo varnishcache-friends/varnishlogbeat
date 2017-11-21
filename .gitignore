@@ -6,3 +6,4 @@
 /varnishlogbeat.test
 *.pyc
 *.bak
+_vendor*
