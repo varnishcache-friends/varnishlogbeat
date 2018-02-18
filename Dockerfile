@@ -8,8 +8,8 @@ RUN apt-get update && apt-get install -y \
 	apt-transport-https \
 	libjemalloc1 \
 	pkg-config \
-	&& echo "deb https://packagecloud.io/varnishcache/varnish51/debian/ stretch main" >> /etc/apt/sources.list.d/varnish.list \
-	&& curl -s -L https://packagecloud.io/varnishcache/varnish51/gpgkey | apt-key add - \
+	&& echo "deb https://packagecloud.io/varnishcache/varnish52/debian/ stretch main" >> /etc/apt/sources.list.d/varnish.list \
+	&& curl -s -L https://packagecloud.io/varnishcache/varnish52/gpgkey | apt-key add - \
 	&& apt-get update && apt-get install -y \
 	varnish \
 	varnish-dev \
