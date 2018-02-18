@@ -2,32 +2,30 @@ FROM golang:1.9.2-stretch
 
 LABEL maintainer phenomenes
 
-ENV PATH=$PATH:$GOPATH/bin
+ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update && apt-get install -y \
 	apt-transport-https \
-	libjemalloc1 \
-	pkg-config \
-	&& echo "deb https://packagecloud.io/varnishcache/varnish52/debian/ stretch main" >> /etc/apt/sources.list.d/varnish.list \
+	&& echo "deb https://packagecloud.io/varnishcache/varnish52/debian/ stretch main" >> \
+	    /etc/apt/sources.list.d/varnish.list \
 	&& curl -s -L https://packagecloud.io/varnishcache/varnish52/gpgkey | apt-key add - \
 	&& apt-get update && apt-get install -y \
+	libjemalloc1 \
+	pkg-config \
 	varnish \
 	varnish-dev \
 	&& apt-get clean && rm -rf /var/lib/apt/lists/*
 
-RUN mkdir -p $GOPATH/src/github.com/phenomenes/varnishlogbeat
-
-COPY . $GOPATH/src/github.com/phenomenes/varnishlogbeat
+ADD . $GOPATH/src/github.com/phenomenes/varnishlogbeat
 
 WORKDIR $GOPATH/src/github.com/phenomenes/varnishlogbeat
 
-RUN go build .
-
-COPY default.vcl /etc/varnish/default.vcl
-COPY docker-entrypoint.sh /docker-entrypoint.sh
+ADD default.vcl /etc/varnish/default.vcl
+ADD docker-entrypoint.sh /docker-entrypoint.sh
 
 RUN sed -i 's/localhost:9200/elasticsearch:9200/' \
-	$GOPATH/src/github.com/phenomenes/varnishlogbeat/varnishlogbeat.yml
+	$GOPATH/src/github.com/phenomenes/varnishlogbeat/varnishlogbeat.yml \
+	&& go build .
 
 EXPOSE 8080
 
