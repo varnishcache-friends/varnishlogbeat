@@ -144,8 +144,7 @@
 [[projects]]
   name = "github.com/phenomenes/vago"
   packages = ["."]
-  revision = "e54d49e02274647fd6eb142bae684ba92b418461"
-  version = "v1.2.0"
+  version = "v1.0.1"
 
 [[projects]]
   name = "github.com/pierrec/lz4"

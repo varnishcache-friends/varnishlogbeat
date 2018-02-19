@@ -1,14 +1,20 @@
 dist: trusty
 language: go
 go:
+  - 1.6
   - 1.7
   - 1.8
-  - 1.9
 env:
-  - VER=5.2
+  - VER=4.1
+  - VER=5.0
 before_install:
-  - curl -s https://packagecloud.io/install/repositories/varnishcache/varnish${VER/./}/script.deb.sh | sudo bash
-  - sudo apt-get install varnish=${VER}.* varnish-dev=${VER}.*
+  - sudo apt-get update
+  - sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 82B186B4
+  - echo
+    "deb http://ppa.launchpad.net/fgsch/varnish-$VER/ubuntu trusty main" |
+    sudo tee /etc/apt/sources.list.d/varnish-cache.list
+  - sudo apt-get update
+  - sudo apt-get install varnish libvarnishapi-dev
   - sudo usermod -a -G varnish $USER
 script:
   - sudo -E su $USER -c "$(which go) test -v"

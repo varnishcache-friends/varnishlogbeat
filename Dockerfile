@@ -6,14 +6,14 @@ ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update && apt-get install -y \
 	apt-transport-https \
-	&& echo "deb https://packagecloud.io/varnishcache/varnish52/debian/ stretch main" >> \
+	&& echo "deb https://packagecloud.io/varnishcache/varnish41/debian/ stretch main" >> \
 	    /etc/apt/sources.list.d/varnish.list \
-	&& curl -s -L https://packagecloud.io/varnishcache/varnish52/gpgkey | apt-key add - \
+	&& curl -s -L https://packagecloud.io/varnishcache/varnish41/gpgkey | apt-key add - \
 	&& apt-get update && apt-get install -y \
 	libjemalloc1 \
 	pkg-config \
-	varnish \
-	varnish-dev \
+	varnish=4.1.9-1~stretch \
+	varnish-dev=4.1.9-1~stretch \
 	&& apt-get clean && rm -rf /var/lib/apt/lists/*
 
 ADD . $GOPATH/src/github.com/phenomenes/varnishlogbeat
