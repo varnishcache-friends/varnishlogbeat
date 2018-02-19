@@ -6,6 +6,8 @@ to Elasticsearch.
 
 Varnishlogbeat uses [vago](https://github.com/phenomenes/vago).
 
+For 4.1 refer to branch `varnish-4.1`
+
 ### Requirements
 
 * [Go](https://golang.org/dl/) >= 1.7
