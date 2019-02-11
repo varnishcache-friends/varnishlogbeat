@@ -1,5 +1,5 @@
 [[configuration-filebeat-options]]
-=== Filebeat Prospectors Configuration
+=== Filebeat Prospectors
 
 The `filebeat` section of the +{beatname_lc}.yml+ config file specifies a list of `prospectors` that Filebeat
 uses to locate and process log files. Each prospector item begins with a dash (-)
@@ -14,7 +14,6 @@ filebeat.prospectors:
 - input_type: log
   paths:
     - /var/log/apache/httpd-*.log
-  document_type: apache
 
 - input_type: log
   paths:
@@ -294,7 +293,10 @@ If you require log lines to be sent in near real time do not use a very low `sca
 
 The default setting is 10s.
 
+[[filebeat-document-type]]
 ===== document_type
+
+deprecated[5.5,Use `fields` instead]
 
 The event type to use for published lines read by harvesters. For Elasticsearch
 output, the value that you specify here is used to set the `type` field in the output
@@ -347,6 +349,10 @@ occur.
 [[multiline]]
 ===== multiline
 
+IMPORTANT: If you are sending multiline events to Logstash, use the options described here to handle multiline events
+before sending the event data to Logstash. Trying to implement multiline event handling in Logstash (for example, by
+using the Logstash multiline codec) may result in the mixing of streams and corrupted data.
+
 Options that control how Filebeat deals with log messages that span multiple lines. Multiline messages are common in files that contain Java stack traces.
 
 The following example shows how to configure Filebeat to handle a multiline message where the first line of the message begins with a bracket (`[`).
@@ -383,11 +389,11 @@ somewhat from the patterns supported by Logstash. See <<regexp-support>> for a l
 +
 [options="header"]
 |=======================
-|Setting for `negate` | Setting for `match` | Result
-|`false`              | `after`             | Consecutive lines that match the pattern are appended to the previous line that doesn't match.
-|`false`              | `before`            | Consecutive lines that match the pattern are prepended to the next line that doesn't match.
-|`true`               | `after`             | Consecutive lines that don't match the pattern are appended to the previous line that does match.
-|`true`               | `before`            | Consecutive lines that don't match the pattern are prepended to the next line that does match.
+|Setting for `negate` | Setting for `match` | Result | Example `pattern: ^b`
+|`false`              | `after`             | Consecutive lines that match the pattern are appended to the previous line that doesn't match. | image:./images/false-after-multi.png[Lines a b b c b b become "abb" and "cbb"]
+|`false`              | `before`            | Consecutive lines that match the pattern are prepended to the next line that doesn't match. | image:./images/false-before-multi.png[Lines b b a b b c become "bba" and "bbc"]
+|`true`               | `after`             | Consecutive lines that don't match the pattern are appended to the previous line that does match. | image:./images/true-after-multi.png[Lines b a c b d e become "bac" and "bde"]
+|`true`               | `before`            | Consecutive lines that don't match the pattern are prepended to the next line that does match. | image:./images/true-before-multi.png[Lines a c b d e b become "acb" and "deb"]
 |=======================
 +
 NOTE: The `after` setting is equivalent to `previous` in https://www.elastic.co/guide/en/logstash/current/plugins-codecs-multiline.html[Logstash], and `before` is equivalent to `next`.
@@ -426,7 +432,7 @@ Because this option may lead to data loss, it is disabled by default.
 
 ===== backoff
 
-The backoff options specify how aggressively Filebeat crawls new files for updates.
+The backoff options specify how aggressively Filebeat crawls open files for updates.
 You can use the default values in most cases.
 
 The `backoff` option defines how long Filebeat
@@ -474,7 +480,7 @@ by assigning a higher limit of harvesters.
 The `enabled` option can be used with each prospector to define if a prospector is enabled or not. By default, enabled is set to true.
 
 [[configuration-global-options]]
-=== Filebeat Global Configuration
+=== Filebeat Global
 
 You can specify configuration options in the +{beatname_lc}.yml+ config file to control Filebeat behavior at a global level.
 
