@@ -14,8 +14,8 @@
           "strings_as_keyword": {
             "mapping": {
               "ignore_above": 1024,
-              "index": "not_analyzed",
-              "type": "string"
+              "index": false,
+              "type": "text"
             },
             "match_mapping_type": "string"
           }
@@ -28,19 +28,16 @@
         "beat": {
           "properties": {
             "hostname": {
-              "ignore_above": 1024,
-              "index": "not_analyzed",
-              "type": "string"
+              "index": false,
+              "type": "text"
             },
             "name": {
-              "ignore_above": 1024,
-              "index": "not_analyzed",
-              "type": "string"
+              "index": false,
+              "type": "text"
             },
             "version": {
-              "ignore_above": 1024,
-              "index": "not_analyzed",
-              "type": "string"
+              "index": false,
+              "type": "text"
             }
           }
         },
@@ -55,43 +52,36 @@
             "cloud": {
               "properties": {
                 "availability_zone": {
-                  "ignore_above": 1024,
-                  "index": "not_analyzed",
-                  "type": "string"
+                  "index": false,
+                  "type": "text"
                 },
                 "instance_id": {
-                  "ignore_above": 1024,
-                  "index": "not_analyzed",
-                  "type": "string"
+                  "index": false,
+                  "type": "text"
                 },
                 "machine_type": {
-                  "ignore_above": 1024,
-                  "index": "not_analyzed",
-                  "type": "string"
+                  "index": false,
+                  "type": "text"
                 },
                 "project_id": {
-                  "ignore_above": 1024,
-                  "index": "not_analyzed",
-                  "type": "string"
+                  "index": false,
+                  "type": "text"
                 },
                 "provider": {
-                  "ignore_above": 1024,
-                  "index": "not_analyzed",
-                  "type": "string"
+                  "index": false,
+                  "type": "text"
                 },
                 "region": {
-                  "ignore_above": 1024,
-                  "index": "not_analyzed",
-                  "type": "string"
+                  "index": false,
+                  "type": "text"
                 }
               }
             }
           }
         },
         "tags": {
-          "ignore_above": 1024,
-          "index": "not_analyzed",
-          "type": "string"
+          "index": false,
+          "type": "text"
         }
       }
     }
