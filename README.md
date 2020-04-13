@@ -6,13 +6,14 @@ to Elasticsearch.
 
 Varnishlogbeat uses [vago](https://github.com/phenomenes/vago).
 
-For 4.1 refer to branch `varnish-4.1`
+If you are looking to run older versions of Varnish checkout the
+correspondent branch, e.g.: `varnish-4.1`.
 
 ### Requirements
 
-* [Go](https://golang.org/dl/) >= 1.7
+* [Go](https://golang.org/dl/) >= 1.14
 * pkg-config
-* [varnish-dev](http://www.varnish-cache.org/releases/) >= 5.2.x
+* [varnish-dev](http://www.varnish-cache.org/releases/) >= 6.x
 
 You will also need to set `PKG_CONFIG_PATH` to the directory where
 `varnishapi.pc` is located before running `go get`. For example:

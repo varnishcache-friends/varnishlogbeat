@@ -1,19 +1,20 @@
-[![Build Status](https://travis-ci.org/phenomenes/vago.svg?branch=master)](https://travis-ci.org/phenomenes/vago)
+![ci](https://github.com/phenomenes/vago/workflows/ci/badge.svg)
 
 # vago
 
-Go bindings for Varnish 5.2.x using cgo.
+Go bindings for Varnish 6.x
 
-For Varnish 4.1 refer to branch `varnish-4.1`.
+If you are looking to run old versions of Varnish check for a version tag,
+`varnish-x.x`.
 
 ## Requirements
 
 To build this package you will need:
 - pkg-config
-- libvarnishapi-dev >= 5.2.0
+- libvarnishapi-dev >= 6.0
 
 You will also need to set PKG_CONFIG_PATH to the directory where `varnishapi.pc`
-is located before running `go get`. For example:
+is located `go get`. For example:
 
 ```
 export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig

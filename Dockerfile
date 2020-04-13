@@ -1,9 +1,9 @@
-FROM golang:1.11-stretch
+FROM golang:1.14-stretch
 
 LABEL maintainer phenomenes
 
 ENV DEBIAN_FRONTEND noninteractive
-ENV VER 6.0
+ENV VER 6.4
 
 RUN /bin/bash -c \
 	'curl -s https://packagecloud.io/install/repositories/varnishcache/varnish${VER/./}/script.deb.sh | /bin/bash' \

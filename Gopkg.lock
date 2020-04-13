@@ -174,12 +174,12 @@
   revision = "c78e8bd2dd3599feb21fd30886043979e82fe948"
 
 [[projects]]
-  digest = "1:cc08bb69dda02f7712603bcce8ac54d64c977c7bb7c54c49c6ecef57262183d6"
+  branch = "master"
+  digest = "1:f31d3d62a6804348e4d9c808b1a75eb255b778c69f0ecc790a70f8f57ca35aae"
   name = "github.com/phenomenes/vago"
   packages = ["."]
   pruneopts = ""
-  revision = "acf34b8a42038dda274bcd59e49efce0d64a6145"
-  version = "v1.3.0"
+  revision = "423186668aff0e18b1d4869ebd3e956a9cef3f74"
 
 [[projects]]
   digest = "1:c1371437c263e0cf8534a3de094d3406de9eafedf6283de9bc0916c7b93642a1"
