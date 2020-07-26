@@ -6,8 +6,8 @@ to Elasticsearch.
 
 Varnishlogbeat uses [vago](https://github.com/phenomenes/vago).
 
-If you are looking to run older versions of Varnish checkout the
-correspondent branch, e.g.: `varnish-4.1`.
+If you are looking to run older versions of Varnish check the corresponding
+branch.
 
 ### Requirements
 

@@ -1,7 +1,5 @@
 FROM golang:1.14-stretch
 
-LABEL maintainer phenomenes
-
 ENV DEBIAN_FRONTEND noninteractive
 ENV VER 6.4
 
