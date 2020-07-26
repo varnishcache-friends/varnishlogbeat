@@ -29,11 +29,10 @@ const (
 	VXID = C.VSL_g_vxid
 	REQ  = C.VSL_g_request
 	SESS = C.VSL_g_session
-	max  = C.VSL_g__MAX
 )
 
 const (
-	_ tribool = iota
+	none tribool = iota
 	Yes
 	No
 )
@@ -47,8 +46,8 @@ type Varnish struct {
 	vslq        *C.struct_VSLQ
 	cursor      *C.struct_VSL_cursor
 	mu          sync.Mutex
-	done        chan struct{}
 	closed      bool
+	done        chan struct{}
 	vslReattach bool
 }
 
@@ -57,7 +56,7 @@ type Config struct {
 	// Path to Varnish Shared Memory file
 	Path string
 	// VSM connection timeout in milliseconds
-	// a negative value for no timeout
+	// -1 for no timeout
 	Timeout time.Duration
 	// Whether to reacquire the to the log
 	// Values can be Yes or No. Default Yes

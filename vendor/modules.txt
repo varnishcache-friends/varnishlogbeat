@@ -1,0 +1,131 @@
+# github.com/Shopify/sarama v1.14.0
+## explicit
+github.com/Shopify/sarama
+# github.com/Shopify/toxiproxy v2.1.4+incompatible
+## explicit
+# github.com/armon/go-socks5 v0.0.0-20160902184237-e75332964ef5
+## explicit
+# github.com/davecgh/go-spew v1.1.0
+github.com/davecgh/go-spew/spew
+# github.com/eapache/go-resiliency v1.0.1-0.20160104191539-b86b1ec0dd42
+## explicit
+github.com/eapache/go-resiliency/breaker
+# github.com/eapache/go-xerial-snappy v0.0.0-20160609142408-bb955e01b934
+## explicit
+github.com/eapache/go-xerial-snappy
+# github.com/eapache/queue v1.0.2
+## explicit
+github.com/eapache/queue
+# github.com/elastic/beats v5.6.14+incompatible
+## explicit
+github.com/elastic/beats/libbeat/beat
+github.com/elastic/beats/libbeat/cfgfile
+github.com/elastic/beats/libbeat/common
+github.com/elastic/beats/libbeat/common/dtfmt
+github.com/elastic/beats/libbeat/common/file
+github.com/elastic/beats/libbeat/common/fmtstr
+github.com/elastic/beats/libbeat/common/jsontransform
+github.com/elastic/beats/libbeat/common/match
+github.com/elastic/beats/libbeat/common/op
+github.com/elastic/beats/libbeat/common/streambuf
+github.com/elastic/beats/libbeat/dashboards/dashboards
+github.com/elastic/beats/libbeat/logp
+github.com/elastic/beats/libbeat/monitoring
+github.com/elastic/beats/libbeat/monitoring/adapter
+github.com/elastic/beats/libbeat/outputs
+github.com/elastic/beats/libbeat/outputs/codecs/format
+github.com/elastic/beats/libbeat/outputs/codecs/json
+github.com/elastic/beats/libbeat/outputs/console
+github.com/elastic/beats/libbeat/outputs/elasticsearch
+github.com/elastic/beats/libbeat/outputs/fileout
+github.com/elastic/beats/libbeat/outputs/kafka
+github.com/elastic/beats/libbeat/outputs/logstash
+github.com/elastic/beats/libbeat/outputs/mode
+github.com/elastic/beats/libbeat/outputs/mode/lb
+github.com/elastic/beats/libbeat/outputs/mode/modeutil
+github.com/elastic/beats/libbeat/outputs/mode/single
+github.com/elastic/beats/libbeat/outputs/outil
+github.com/elastic/beats/libbeat/outputs/redis
+github.com/elastic/beats/libbeat/outputs/transport
+github.com/elastic/beats/libbeat/paths
+github.com/elastic/beats/libbeat/plugin
+github.com/elastic/beats/libbeat/processors
+github.com/elastic/beats/libbeat/processors/actions
+github.com/elastic/beats/libbeat/processors/add_cloud_metadata
+github.com/elastic/beats/libbeat/publisher
+github.com/elastic/beats/libbeat/service
+github.com/elastic/beats/libbeat/setup/kibana
+github.com/elastic/beats/metricbeat/schema
+github.com/elastic/beats/metricbeat/schema/mapstriface
+# github.com/elastic/go-lumber v0.1.0
+## explicit
+github.com/elastic/go-lumber/client/v2
+github.com/elastic/go-lumber/log
+github.com/elastic/go-lumber/protocol/v2
+# github.com/elastic/go-ucfg v0.4.6
+## explicit
+github.com/elastic/go-ucfg
+github.com/elastic/go-ucfg/cfgutil
+github.com/elastic/go-ucfg/flag
+github.com/elastic/go-ucfg/internal/parse
+github.com/elastic/go-ucfg/json
+github.com/elastic/go-ucfg/yaml
+# github.com/garyburd/redigo v1.0.0
+## explicit
+github.com/garyburd/redigo/internal
+github.com/garyburd/redigo/redis
+# github.com/golang/snappy v0.0.0-20160529050041-d9eb7a3d35ec
+## explicit
+github.com/golang/snappy
+# github.com/joeshaw/multierror v0.0.0-20140124173710-69b34d4ec901
+## explicit
+github.com/joeshaw/multierror
+# github.com/klauspost/compress v0.0.0-20160313145351-006acde2c5d2
+## explicit
+github.com/klauspost/compress/flate
+github.com/klauspost/compress/zlib
+# github.com/klauspost/cpuid v0.0.0-20160302075316-09cded8978dc
+## explicit
+github.com/klauspost/cpuid
+# github.com/mitchellh/hashstructure v0.0.0-20160609170929-b098c52ef6be
+## explicit
+github.com/mitchellh/hashstructure
+# github.com/niemeyer/pretty v0.0.0-20200227124842-a10e7caefd8e
+## explicit
+# github.com/nranchev/go-libGeoIP v0.0.0-20140312025335-c78e8bd2dd35
+## explicit
+github.com/nranchev/go-libGeoIP
+# github.com/phenomenes/vago v1.3.0
+## explicit
+github.com/phenomenes/vago
+# github.com/pierrec/lz4 v0.0.0-20161206202305-5c9560bfa9ac
+## explicit
+github.com/pierrec/lz4
+# github.com/pierrec/xxHash v0.0.0-20160112165351-5a004441f897
+## explicit
+github.com/pierrec/xxHash/xxHash32
+# github.com/pkg/errors v0.7.0
+## explicit
+github.com/pkg/errors
+# github.com/rcrowley/go-metrics v0.0.0-20160921195207-ab2277b1c5d1
+## explicit
+github.com/rcrowley/go-metrics
+github.com/rcrowley/go-metrics/exp
+# github.com/satori/go.uuid v1.1.0
+## explicit
+github.com/satori/go.uuid
+# github.com/stretchr/testify v1.6.1
+## explicit
+# golang.org/x/net v0.0.0-20160304045624-d58ca6618b99
+## explicit
+golang.org/x/net/proxy
+# golang.org/x/sys v0.0.0-20160615012701-62bee0375999
+## explicit
+golang.org/x/sys/windows
+golang.org/x/sys/windows/svc
+golang.org/x/sys/windows/svc/debug
+# gopkg.in/check.v1 v1.0.0-20200227125254-8fa46927fb4f
+## explicit
+# gopkg.in/yaml.v2 v2.0.0-20160301204022-a83829b6f129
+## explicit
+gopkg.in/yaml.v2
